@@ -17,7 +17,16 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		log.Printf("title: %s\n", title)
 	}
 
+	printHeaders(r)
+
 	fmt.Fprintf(w, "Hello from:  "+title+"\n")
+}
+
+func printHeaders(r *http.Request) {
+	fmt.Println("Headers:")
+	for k, v := range r.Header {
+		fmt.Printf("%s: %s", k, v)
+	}
 }
 
 func main() {
