@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"strings"
 )
 
 func handler(w http.ResponseWriter, r *http.Request) {
@@ -25,7 +26,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 func printHeaders(r *http.Request) {
 	fmt.Println("Headers:")
 	for k, v := range r.Header {
-		fmt.Printf("%s: %s", k, v)
+		fmt.Printf("%s: %s\n", k, strings.Join(v, " "))
 	}
 }
 
